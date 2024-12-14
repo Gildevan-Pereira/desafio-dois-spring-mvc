@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">My App</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to the Home Page!</h1>
+        <p class="lead">You have successfully logged in.</p>
+        <hr class="my-4">
+        <a class="btn btn-custom btn-lg btn-info" th:href="@{/course_registration}" role="button">Cadastrar Curso</a>
+<!--        <a class="btn btn-custom btn-lg btn-success" th:href="@{students/courses/update}" role="button">Atualizar Lista De Cursos</a>-->
+    </div>
+
+    <div class="container mt-5">
+        <h2>Lista de Inscrições</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>Data de Nascimento</th>
+                <th>Cidade</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Loop para iterar sobre a lista de cursos -->
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.id}"></td>
+                <td th:text="${course.name}"></td>
+                <td th:text="${course.course}"></td>
+                <td th:text="${course.birthDate}"></td>
+                <td th:text="${course.city}"></td>
+                <td>
+                    <a th:href="@{/students/delete/course/{id}(id=${course.id})}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

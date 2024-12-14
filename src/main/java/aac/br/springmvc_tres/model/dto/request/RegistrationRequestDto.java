@@ -10,6 +10,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class RegistrationRequestDto {
 
+    private Integer userId;
+
     private String name;
 
     private LocalDate birthDate;

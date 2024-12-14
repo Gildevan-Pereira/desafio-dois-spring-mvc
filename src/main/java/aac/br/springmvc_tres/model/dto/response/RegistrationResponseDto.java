@@ -1,18 +1,20 @@
 package aac.br.springmvc_tres.model.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegistrationResponseDto {
 
 
     private Integer id;
+
+    private Integer userId;
 
     private String name;
 
